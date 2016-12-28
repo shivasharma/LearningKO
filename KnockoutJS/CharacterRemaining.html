@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <textarea data-bind="value:myText, valueUpdate:'afterkeydown'"></textarea><br/>
+    <textarea data-bind="textInput: myText"></textarea><br />
+    Characters remaining:<span data-bind="text:charactersRemaining"></span>
+    <script>
+
+        function ViewModel() {
+
+            var self = this;
+            self.myText = ko.observable('');
+            self.maxCharacters = 140;
+            self.charactersRemaining = ko.computed(function () {
+                return self.maxCharacters - self.myText().length;
+            });
+
+        }
+
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel);
+
+    </script>
+</body>
+</html>

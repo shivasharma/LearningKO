@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+   
+   
+   <h2 data-bind="html:getName()"></h2>
+
+    <button type="submit" data-bind="text: (isNew()) ? 'Create' : 'Update'"></button> 
+    <script>
+      
+
+        function ViewModelOOP() {
+            var self = this;
+
+            self.name = "Shiva Sharma";
+            self.getName = function () {
+                return 'Hello <em>' + self.name + '</em>';
+            };
+
+            self.id = 1;
+            self.isNew = function () {
+                return self.id == 0;
+            };
+        };
+        var viewModel = new ViewModelOOP();
+        ko.applyBindings(viewModel);
+        
+    </script>
+</body>
+</html>

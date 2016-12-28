@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+</head>
+<body>
+    <h1>hello <span data-bind="text:name"></span></h1>
+    <!--<h1>hello second <span data-bind="text:mySecondViewModel.getName()"></span></h1>-->
+   <h2 data-bind="html:getName()"</h2>
+    <script>
+        var ViewModel = function () {
+            var self = this;
+            self.name = 'Shiva Sharma';
+        };
+        ko.applyBindings(ViewModel);
+       // OOP design ViewModel
+
+        function ViewModelOOP() {
+            var self = this;
+            self.name = "Shiva Sharma";
+            self.getName = function () {
+                return 'Hello <em>' + self.name + '</em>';
+            };
+        };
+        var viewModel = new ViewModelOOP();
+        ko.applyBindings(viewModel);
+        
+    </script>
+</body>
+</html>

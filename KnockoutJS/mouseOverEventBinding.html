@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script src="Scripts/jquery-3.1.1.min.js"></script>
+<script src="Scripts/knockout-3.4.0.js"></script>
+<body>
+    <img id="current_book" /> 
+    <ul>
+        <!-- ko foreach: books -->
+        <li data-bind="text: title, event: { mouseover: $parent.loadImage }"></li>
+        <!-- /ko -->
+    </ul> 
+    <script>
+        function ViewModel() {
+            var self = this;
+
+            self.books = [
+                {
+                    title: 'Rapid Application Development With CakePHP',
+                    image: 'http://ecx.images-amazon.com/images/I/41JC54HEroL._AA160_.jpg'
+                }, {
+                    title: '20 Recipes for Programming MVC 3:  Faster, Smarter Web Development',
+                    image:
+                    'http://ecx.images-amazon.com/images/I/51LpqnDq8-L._AA160_.jpg'
+                }, {
+                    title: '20 Recipes for Programming PhoneGap:  Cross-Platform Mobile Development for Android and iPhone',
+                    image: 'http://ecx.images-amazon.com/images/I/51AkFkNeUxL._AA160_.jpg'
+                }
+            ];
+            self.loadImage = function (data, event) {
+                $("#current_book").attr('src', data.image);
+            };
+        }
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>

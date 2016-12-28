@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script src="Scripts/jquery-3.1.1.min.js"></script>
+<script src="Scripts/jquery.validate.unobtrusive.bootstrap.min.js"></script>
+<script src="Scripts/knockout-3.4.0.js"></script>
+<body>
+
+    <form data-bind="submit:validate">
+        <input type="text" data-bind="value: firstName"
+               placeholder="Enter your first name" required /><br />
+        <input type="text" data-bind="value: lastName"
+               placeholder="Enter your last name" required /><br />
+        <input type="email" data-bind="value: email"
+               placeholder="Enter your email" required /><br />
+        <input type="submit" />
+    </form>
+
+    <script>
+
+        function ViewModel() {
+            var self = this;
+
+            self.firstName = ko.observable();
+            self.lastName = ko.observable();
+            self.email = ko.observable();
+
+            self.validate = function(form) {
+                return $(form).validate();
+            };
+        };
+
+        var viewModel = new ViewModel();
+        ko.applyBindings(viewModel);
+    </script>
+</body>
+</html>
